@@ -1,0 +1,54 @@
+<div class="container">
+  <h2 class="py-4">Cuentas</h2>
+  <form [formGroup]="form"> buscar cuentas por tipo
+    <input class="form-control" type="text" formControlName="tipo" placeholder="tipo">
+    <button (click)="search()">Buscar</button>
+    <button (click)="getData()">Ver todo</button>
+  </form>
+<br>
+  <div class="form-group mb-4">
+    <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Filtro por tipo">
+
+
+  </div>
+
+  <table class="table" *ngIf="(data | filter: searchText).length > 0; else noResults">
+    <colgroup>
+      <col width="50%">
+
+    </colgroup>
+    <thead>
+      <tr>
+        <th [class.active]="order === 'data.NroCuenta'"
+            (click)="setOrder('data.NroCuenta')"
+        >
+          NroCuenta <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+        <th [class.active]="order === 'data.tipo'"
+            (click)="setOrder('data.tipo')"
+            class="mdl-data-table__cell--non-numeric"
+        >
+          Tipo <span [hidden]="reverse">▼</span
+          ><span [hidden]="!reverse">▲</span>
+        </th>
+
+
+      </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let cuenta of data | filter: searchText | orderBy: order:reverse:'case-insensitive'; let i = index">
+        <td>{{cuenta.nroCuenta}}</td>
+        <td>{{cuenta.tipo}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noResults>
+    <p>No results found for "{{searchText}}".</p>
+  </ng-template>
+</div>
+
+
+
+
