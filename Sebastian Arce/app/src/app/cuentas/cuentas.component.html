@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="py-4">Cuentas</h2>
   <form [formGroup]="form"> buscar cuentas por tipo
-    <input class="form-control" type="text" formControlName="tipo" placeholder="tipo">
+    <input  class="form-control" type="text" formControlName="tipo" placeholder="tipo">
     <button (click)="search()">Buscar</button>
     <button (click)="getData()">Ver todo</button>
   </form>
@@ -51,4 +51,5 @@
 
 
 
-
+Input con directiva de ingreso solo numeros
+<input numbersOnly class="form-control" type="text"  placeholder="Numbers only">
