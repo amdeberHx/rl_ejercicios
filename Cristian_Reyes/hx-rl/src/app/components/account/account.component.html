@@ -1,0 +1,38 @@
+<div class="acc-wrapper">
+
+  <mat-form-field>
+    <input
+      matInput
+      appOnlyNumbers
+      type="text"
+      (keyup)="doFilter($event.target.value)"
+      placeholder="Filter (only numbers)"
+    >
+  </mat-form-field>
+
+  <h2> Info Accounts </h2>
+
+  <table mat-table [dataSource]="dataSorted" matSort class="mat-elevation-z5">
+
+    <ng-container matColumnDef="nroCuenta">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nro. Cuenta</th>
+      <td mat-cell *matCellDef="let element"> {{element.nroCuenta}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipo}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="9999">
+        No hay datos que coincidan con el filtro.
+      </td>
+    </tr>
+
+  </table>
+
+</div>
