@@ -1,5 +1,7 @@
 # Accounts | Red Link
 
+![application](https://github.com/amdeberHx/rl_ejercicios/blob/main/Cristian_Reyes/hx-rl/accounts_rl.png)
+
 ### Ejercicio
 ```
 @GET
